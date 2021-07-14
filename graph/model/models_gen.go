@@ -7,12 +7,11 @@ type NewUser struct {
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
+	CreatedAt int    `json:"created_at"`
+	UpdatedAt int    `json:"updated_at"`
 }
 
-type User struct {
-	ID        string `json:"_id" bson:"_id"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
+type Token struct {
+	Token     string `json:"token"`
+	ExpiredAt int    `json:"expired_at"`
 }

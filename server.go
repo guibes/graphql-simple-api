@@ -7,13 +7,20 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
+	"github.com/go-chi/chi"
 	"github.com/guibes/graphql-simple-api/graph"
 	"github.com/guibes/graphql-simple-api/graph/generated"
+	"github.com/guibes/graphql-simple-api/graph/middleware"
 )
 
 const defaultPort = "8080"
 
 func main() {
+
+	router := chi.NewRouter()
+
+	router.Use(middleware.JwtMiddleware())
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = defaultPort
